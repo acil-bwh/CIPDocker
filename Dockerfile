@@ -16,7 +16,7 @@ RUN apt-get update && \
 RUN git clone -b develop https://github.com/acil-bwh/ChestImagingPlatform.git
 RUN	mkdir ChestImagingPlatform-build
 WORKDIR /ChestImagingPlatform-build
-RUN	cmake ../ChestImagingPlatform/ -DINSTALL_CIP_PYTHON_DL_TOOLS:BOOL=OFF
+RUN	cmake ../ChestImagingPlatform/ 
 RUN	make
 
 RUN mkdir /host
