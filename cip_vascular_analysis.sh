@@ -22,6 +22,12 @@ $dock cp /host/${cid}.nrrd /tmp/${cid}.nrrd
 
 z_size=`$dock unu head ${cid}.nrrd | grep sizes | cut -d" " -f4`
 spacing=`$dock unu head ${cid}.nrrd | grep directions | cut -d, -f7 | cut -d\) -f1`
+
+if [ "$spacing" -eq "0" ]; then
+   echo "invalid DICOM data; spacing is 0";
+   exit;
+fi
+
 down=`awk "BEGIN {print ${spacing}/2}"`
 up=`awk "BEGIN {print 2/${spacing}}"`
 
